@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TCI Internal Database</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    background: #0a0a0a;
+    color: #d6d6d6;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+  }
+
+  header {
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #c13232;
+  }
+
+  .wrapper {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  .login-box {
+    background: #151515;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 25px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    background: #0f0f0f;
+    border: 1px solid #444;
+    color: #fff;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+
+  button {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    background: #282828;
+    border: 1px solid #444;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  .subject-list {
+    display: none;
+    margin-top: 30px;
+  }
+
+  .subject {
+    background: #131313;
+    border: 1px solid #2c2c2c;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+
+  .grey {
+    background: #090909;
+    border-color: #303030;
+    color: #555;
+  }
+
+  .subject h3 {
+    margin: 0 0 6px;
+    color: #e8e8e8;
+  }
+
+  .grey h3 {
+    color: #555;
+  }
+
+</style>
+
+<script>
+  function login() {
+    const code = document.getElementById("authcode").value.trim();
+    if (code.toLowerCase() === "27xh1") {
+      document.getElementById("login").style.display = "none";
+      document.querySelector(".subject-list").style.display = "block";
+    } else {
+      alert("Authorization Denied: Invalid Employee Code.");
+    }
+  }
+</script>
+</head>
+
+<body>
+
+<header>
+  <h1>TCI DATABASE ACCESS</h1>
+</header>
+
+<div class="wrapper">
+
+  <div id="login" class="login-box">
+    <p><strong>Employee Authorization Required</strong></p>
+    <p>Enter your official TCI-A level access code:</p>
+    <input id="authcode" type="password" placeholder="Enter Code">
+    <button onclick="login()">Authorize</button>
+  </div>
+
+  <div class="subject-list">
+
+    <!-- SUBJECT 982 -->
+    <div class="subject">
+      <h3>Subject 982-AH</h3>
+      <p>Status: ACTIVE — Restricted</p>
+      <p>Notes: Behavioral instability, auditory mimicry, restricted sensory containment. Classified under MM-336.</p>
+    </div>
+
+    <!-- SUBJECT 1204 -->
+    <div class="subject">
+      <h3>Subject 1204-DR</h3>
+      <p>Status: ACTIVE — Cognitive Drift Detected</p>
+      <p>Notes: Memory fragmentation, environmental influence detected. Previous civilian identity: D.R. *</p>
+    </div>
+
+    <!-- RANDOM CASES -->
+    <div class="subject">
+      <h3>Case 1432 — Non-Critical</h3>
+      <p>Routine medical classification. No anomalies detected.</p>
+    </div>
+
+    <div class="subject">
+      <h3>Case 9401 — Criminal Record Archive</h3>
+      <p>Stored for reference only. No relation to MM-336.</p>
+    </div>
+
+    <div class="subject grey">
+      <h3>Subject ████</h3>
+      <p>DATA LOCKED</p>
+    </div>
+
+    <div class="subject grey">
+      <h3>Subject ████</h3>
+      <p>Insufficient clearance.</p>
+    </div>
+
+    <div class="subject grey">
+      <h3>Subject 3X22</h3>
+      <p>REDACTED</p>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
