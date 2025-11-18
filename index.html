@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TCI Secure Terminal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    background: #050505;
+    font-family: Consolas, monospace;
+    color: #dcdcdc;
+    margin: 0;
+    padding: 0;
+  }
+
+  .screen {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #0d0d0d;
+    border: 1px solid #1b1b1b;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .logo {
+    width: 90px;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .warn {
+    background: #130000;
+    border: 1px solid #331111;
+    padding: 10px;
+    color: #ff6e6e;
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  input {
+    width: 95%;
+    padding: 10px;
+    margin-top: 12px;
+    background: #0b0b0b;
+    border: 1px solid #333;
+    color: #fff;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #2b4b6b;
+    border: 1px solid #3d6a93;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button:hover {
+    background: #355c86;
+  }
+
+  .error {
+    color: #d26b6b;
+    margin-top: 12px;
+    display: none;
+    font-size: 13px;
+  }
+
+  .logbox {
+    white-space: pre-line;
+    background: #000000;
+    border: 1px solid #222;
+    padding: 12px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  .section-title {
+    color: #6fa6ff;
+    font-size: 17px;
+    margin-top: 25px;
+  }
+
+  /* Fake email popup */
+  .email-popup {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    background: #101010;
+    border: 1px solid #333;
+    padding: 15px;
+    width: 300px;
+    display: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.7);
+  }
+
+  .email-popup h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #ff6d6d;
+  }
+
+</style>
+
+<script>
+function login() {
+  const email = document.getElementById("email").value.trim();
+  const pw = document.getElementById("password").value.trim();
+  if (email === "TCI.info@tci.com" && pw === "AD") {
+    document.getElementById("login-screen").classList.add("hidden");
+    document.getElementById("observe-screen").classList.remove("hidden");
+  } else {
+    document.getElementById("login-error").style.display = "block";
+  }
+}
+
+function checkObsPass() {
+  const p = document.getElementById("obsPass").value.trim();
+  if (p === "Observe.") {
+    document.getElementById("admin-section").classList.remove("hidden");
+    document.getElementById("obs-error").style.display = "none";
+  } else {
+    document.getElementById("obs-error").style.display = "block";
+  }
+}
+
+function completeOperation() {
+  document.getElementById("email-popup").style.display = "block";
+}
+</script>
+
+</head>
+<body>
+
+<!-- Fake email popup -->
+<div id="email-popup" class="email-popup">
+  <h3>URGENT: TCI INTERNAL MAIL</h3>
+  <p>
+    This is your <strong>first and final warning.</strong><br><br>
+    You have accessed material far beyond your clearance.  
+    You are interfering with people you do not understand.  
+    <br><br>
+    Do not proceed again.  
+    <br><br>
+    <strong>Speak of this, and you will be next.</strong>
+  </p>
+</div>
+
+<!-- ======================== LOGIN SCREEN ========================= -->
+<div id="login-screen" class="screen">
+  <img class="logo" src="https://i.imgur.com/435smyA.png">
+
+  <h1>TCI SECURE ACCESS PORTAL</h1>
+
+  <div class="warn">
+    THIS SYSTEM IS RESTRICTED.  
+    Unauthorized access is punishable under Sections 12A, 14C, 18B, 19F,
+    and 22D of the Trans-Cognitive Oversight Act.  
+    <br><br>
+    ALL activity is monitored. Any unauthorized user will be detained.
+  </div>
+
+  <input id="email" placeholder="Email">
+  <input id="password" placeholder="Password" type="password">
+  <button onclick="login()">LOGIN</button>
+
+  <div id="login-error" class="error">Invalid credentials.</div>
+</div>
+
+
+
+<!-- ====================== OBSERVATION SCREEN ====================== -->
+<div id="observe-screen" class="screen hidden">
+
+  <h1>TCI LEVEL 2 OBSERVATION TERMINAL</h1>
+
+  <div class="warn">
+    WARNING: Unauthorized viewing of MiddleMan Cohort 336 materials  
+    will result in immediate disciplinary action.
+  </div>
+
+  <h2 class="section-title">Subject Overview</h2>
+  <p>
+    Designation: <strong>Subject 982</strong><br>
+    Former Identity: <strong>Aaron "Denvil" Harrow</strong><br>
+    Experiment: <strong>MiddleMan: Cohort 336</strong><br><br>
+
+    Public disappearance successfully executed.  
+    Digital footprint scrubbed.  
+    All social channels nullified.
+  </p>
+
+  <h2 class="section-title">Containment Notes</h2>
+  <div class="logbox">
+  - Subject removed post-experiment.  
+  - Unexpected cognitive mutation detected.  
+  - Subject exhibits non-human behavior patterns.  
+  - Locked in Holding Cell 4C since 2019.  
+  - Transfer arrangements to AREA 51 initiated.  
+  </div>
+
+  <h2 class="section-title">Internal Chat Log Extract</h2>
+  <div class="logbox">
+  [TCI-LOG 337A]  
+  Employee A: Password for Observation changed again?  
+  Employee B: Yeah. It's "Observe."  
+  Employee A: Why so paranoid?  
+  Employee B: After what he became? You'd be paranoid too.
+  </div>
+
+  <h2 class="section-title">Password Required</h2>
+  <input id="obsPass" placeholder="Enter Observation password">
+  <button onclick="checkObsPass()">Unlock Admin Functions</button>
+  <div id="obs-error" class="error">Incorrect password.</div>
+
+
+  <!-- ======================== ADMIN SECTION ========================= -->
+  <div id="admin-section" class="hidden">
+
+    <h2 class="section-title">ADMIN — SUBJECT 982 DOSSIER</h2>
+
+    <div class="logbox">
+    SUBJECT: 982  
+    CONDITION: Unstable / Unknown  
+    CATEGORY: Non-Human Adjacent  
+    LAST EVENT: 4C-███  
+    NOTES: Maintains fragments of MiddleMan negotiation speech.  
+    </div>
+
+    <h2 class="section-title">Server Operations</h2>
+
+    <p>
+      If you wish to finalize the MiddleMan project,  
+      you may update the official clearance logs below.
+    </p>
+
+    <button onclick="completeOperation()">Mark Operation as Complete</button>
+
+  </div>
+
+</div>
+
+</body>
+</html>
